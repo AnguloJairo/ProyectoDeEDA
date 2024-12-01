@@ -49,7 +49,6 @@ public class Aplicación {
                 opciónsecundaria = sc.nextInt();
                 System.out.println("---------------------------------------------------------");
                 mostrarMenúParaAlgoritmosCuadraticos(opciónsecundaria);
-
                 break;
                 case 2:
                     System.out.println("\t✭✭✭✭ Algoritmos de Ordenamiento Caso Promedio o Peor Caso ✭✭✭✭");
@@ -57,7 +56,7 @@ public class Aplicación {
                     System.out.println("2.1 Merge Sort");
                     System.out.println("2.2 Quick Sort");
                     System.out.println("---------------------------------------------------------");
-                    System.out.println("Seleccione una opción : ");
+                    System.out.print("Seleccione una opción : ");
                     opciónsecundaria = sc.nextInt();
                     System.out.println("---------------------------------------------------------");
                     mostrarMenúDeAlgoritmosCasoPromedio(opciónsecundaria);
@@ -68,9 +67,10 @@ public class Aplicación {
                         System.out.println("3.1 Búsqueda Lineal");
                         System.out.println("3.2 Búsqueda Binaria");
                         System.out.println("---------------------------------------------------------");
-                        System.out.println("Selecione una opción :");
+                        System.out.print("Selecione una opción :");
                         opciónsecundaria = sc.nextInt();
                         System.out.println("---------------------------------------------------------");
+                        mostrarMenúDeBúsquedaLinealYBinaria(opciónsecundaria);
                         break;
                         case 4:
                             System.out.println("\t✭✭✭✭ Hashing y Resolución de Colisiones ✭✭✭✭");
@@ -78,9 +78,10 @@ public class Aplicación {
                             System.out.println("4.1 Linear Probing");
                             System.out.println("4.2 Quadratic Probing");
                             System.out.println("---------------------------------------------------------");
-                            System.out.println("Seleccione una opción : ");
+                            System.out.print("Seleccione una opción : ");
                             opciónsecundaria = sc.nextInt();
                             System.out.println("---------------------------------------------------------");
+                            mostrarMenúDeHashingYResoluciónDeColisiones(opciónsecundaria);
                             break;
                             case 5:
                                 System.out.println("\t✭✭✭✭ Redimensionamiento de Arrays ✭✭✭✭");
@@ -88,14 +89,120 @@ public class Aplicación {
                                 System.out.println("5.1 Redimensionar Array Unidimensional");
                                 System.out.println("5.2 Redimensionar Array Bidimensional");
                                 System.out.println("---------------------------------------------------------");
-                                System.out.println("Seleccione una opción : ");
+                                System.out.print("Seleccione una opción : ");
                                 System.out.println("---------------------------------------------------------");
                                 opciónsecundaria = sc.nextInt();
+                                mostrarMenúDeRedimensionamientoDeArrays(opciónsecundaria);
                                 break;
                                 default:
 
         }
 
+    }
+
+    private static void mostrarMenúDeRedimensionamientoDeArrays(int opciónsecundaria) {
+    }
+
+    private static void mostrarMenúDeHashingYResoluciónDeColisiones(int opciónsecundaria) {
+
+    }
+
+    private static void mostrarMenúDeBúsquedaLinealYBinaria(int opciónsecundaria) {
+        Scanner sc = new Scanner(System.in);
+        int opción;
+        int [] arreglo;
+        int [] arregloOrdenado;
+        int elemento;
+        switch (opciónsecundaria) {
+            case 1:
+                BúsquedaLineal algoritmoBúsquedaLineal = new BúsquedaLineal();
+                System.out.println("\t✭✭✭✭ Ha seleccionado Busqueda Lineal ✭✭✭✭");
+                System.out.println("---------------------------------------------------------");
+                System.out.println("Desea : " + "\n1.- Generar un Arreglo Automatico" + "\n2.- Ingresar Arreglo ");
+                System.out.println("---------------------------------------------------------");
+                System.out.print("Seleccione una opción : ");
+                opción = sc.nextInt();
+                System.out.println("---------------------------------------------------------");
+                switch (opción) {
+                    case 1:
+                        System.out.println("---------------------------------------------------------");
+                        arreglo = algoritmoBúsquedaLineal.generarArreglo();
+                        System.out.println("\t✭✭✭✭ Arreglo Creado ✭✭✭✭");
+                        System.out.println("---------------------------------------------------------");
+                        arregloOrdenado=algoritmoBúsquedaLineal.ordenarArreglo(arreglo);
+                        algoritmoBúsquedaLineal.mostrarArreglo(arregloOrdenado);
+                        System.out.println("---------------------------------------------------------");
+                        System.out.print("✭ Ingrese el elemento a buscar : ");
+                        elemento=sc.nextInt();
+                        algoritmoBúsquedaLineal.buscarElemento(elemento,arregloOrdenado);
+                        System.out.println("---------------------------------------------------------");
+                        break;
+                    case 2:
+                        System.out.println("---------------------------------------------------------");
+                        System.out.println(ANSI_RED + "\t✭✭✭✭ Ingreso de Arreglo ✭✭✭✭" + ANSI_RESET);
+                        System.out.println("---------------------------------------------------------");
+                        arreglo = algoritmoBúsquedaLineal.ingresarArreglo();
+                        System.out.println("\t✭✭✭✭ Arreglo Creado ✭✭✭✭");
+                        System.out.println("---------------------------------------------------------");
+                        algoritmoBúsquedaLineal.mostrarArreglo(arreglo);
+                        arregloOrdenado = algoritmoBúsquedaLineal.ordenarArreglo(arreglo);
+                        System.out.println("---------------------------------------------------------");
+                        System.out.println(ANSI_RED + "\t✭✭✭✭ Arreglo Ordenado ✭✭✭✭" + ANSI_RESET);
+                        System.out.println("---------------------------------------------------------");
+                        algoritmoBúsquedaLineal.mostrarArreglo(arregloOrdenado);
+                        System.out.println("---------------------------------------------------------");
+                        System.out.print("✭ Ingrese el elemento a buscar : ");
+                        elemento=sc.nextInt();
+                        algoritmoBúsquedaLineal.buscarElemento(elemento,arregloOrdenado);
+                        System.out.println("---------------------------------------------------------");
+                        break;
+                }
+                break;
+            case 2:
+                BúsquedaBinaria algoritmoBúsquedaBinaria = new BúsquedaBinaria();
+                System.out.println("\t✭✭✭✭ Ha seleccionado Busqueda Binaria ✭✭✭✭");
+                System.out.println("---------------------------------------------------------");
+                System.out.println("Desea : " + "\n1.- Generar un Arreglo Automatico" + "\n2.- Ingresar Arreglo ");
+                System.out.println("---------------------------------------------------------");
+                System.out.print("Seleccione una opción : ");
+                opción = sc.nextInt();
+                System.out.println("---------------------------------------------------------");
+                switch (opción) {
+                    case 1:
+                        System.out.println("---------------------------------------------------------");
+                        arreglo = algoritmoBúsquedaBinaria.generarArreglo();
+                        System.out.println("\t✭✭✭✭ Arreglo Creado ✭✭✭✭");
+                        System.out.println("---------------------------------------------------------");
+                        arregloOrdenado=algoritmoBúsquedaBinaria.ordenarArreglo(arreglo);
+                        algoritmoBúsquedaBinaria.mostrarArreglo(arregloOrdenado);
+                        System.out.println("---------------------------------------------------------");
+                        System.out.print("✭ Ingrese el elemento a buscar : ");
+                        elemento=sc.nextInt();
+                        algoritmoBúsquedaBinaria.buscarElemento(elemento,arregloOrdenado);
+                        System.out.println("---------------------------------------------------------");
+                        break;
+                    case 2:
+                        System.out.println("---------------------------------------------------------");
+                        System.out.println(ANSI_RED + "\t✭✭✭✭ Ingreso de Arreglo ✭✭✭✭" + ANSI_RESET);
+                        System.out.println("---------------------------------------------------------");
+                        arreglo = algoritmoBúsquedaBinaria.ingresarArreglo();
+                        System.out.println("\t✭✭✭✭ Arreglo Creado ✭✭✭✭");
+                        System.out.println("---------------------------------------------------------");
+                        algoritmoBúsquedaBinaria.mostrarArreglo(arreglo);
+                        arregloOrdenado = algoritmoBúsquedaBinaria.ordenarArreglo(arreglo);
+                        System.out.println("---------------------------------------------------------");
+                        System.out.println(ANSI_RED + "\t✭✭✭✭ Arreglo Ordenado ✭✭✭✭" + ANSI_RESET);
+                        System.out.println("---------------------------------------------------------");
+                        algoritmoBúsquedaBinaria.mostrarArreglo(arregloOrdenado);
+                        System.out.println("---------------------------------------------------------");
+                        System.out.print("✭ Ingrese el elemento a buscar : ");
+                        elemento=sc.nextInt();
+                        algoritmoBúsquedaBinaria.buscarElemento(elemento,arregloOrdenado);
+                        System.out.println("---------------------------------------------------------");
+                        break;
+                }
+                break;
+        }
     }
 
     private static void mostrarMenúDeAlgoritmosCasoPromedio(int opciónsecundaria) {
@@ -105,8 +212,8 @@ public class Aplicación {
         int [] arregloOrdenado;
         switch (opciónsecundaria){
             case 1:
-                BubbleSort algoritmoBubbleSort =  new BubbleSort();
-                System.out.println("\t✭✭✭✭ Ha seleccionado Bubble Sort ✭✭✭✭");
+                MergeSort algoritmoMergeSort =  new MergeSort();
+                System.out.println("\t✭✭✭✭ Ha seleccionado Merge Sort ✭✭✭✭");
                 System.out.println("---------------------------------------------------------");
                 System.out.println("Desea : "+"\n1.- Generar un Arreglo Automatico"+"\n2.- Ingresar Arreglo ");
                 System.out.println("---------------------------------------------------------");
@@ -116,42 +223,87 @@ public class Aplicación {
                 switch (opción){
                     case 1:
                         System.out.println("---------------------------------------------------------");
-                        arreglo = algoritmoBubbleSort.generarArreglo();
+                        arreglo = algoritmoMergeSort.generarArreglo();
                         System.out.println("\t✭✭✭✭ Arreglo Creado ✭✭✭✭");
                         System.out.println("---------------------------------------------------------");
-                        algoritmoBubbleSort.mostrarArreglo(arreglo);
+                        algoritmoMergeSort.mostrarArreglo(arreglo);
                         System.out.println("---------------------------------------------------------");
                         System.out.println("\t✭✭✭✭ Algoritmo de Ordenamiento ✭✭✭✭");
                         System.out.println("---------------------------------------------------------");
-                        arregloOrdenado = algoritmoBubbleSort.ordenarArreglo(arreglo);
+                        arregloOrdenado = algoritmoMergeSort.ordenarArreglo(arreglo);
                         System.out.println("---------------------------------------------------------");
                         System.out.println(ANSI_RED+"\t✭✭✭✭ Arreglo Ordenado ✭✭✭✭"+ANSI_RESET);
                         System.out.println("---------------------------------------------------------");
-                        algoritmoBubbleSort.mostrarArreglo(arregloOrdenado);
+                        algoritmoMergeSort.mostrarArreglo(arregloOrdenado);
                         System.out.println("---------------------------------------------------------");
                         break;
                     case 2:
                         System.out.println("---------------------------------------------------------");
                         System.out.println(ANSI_RED+"\t✭✭✭✭ Ingreso de Arreglo ✭✭✭✭"+ANSI_RESET);
                         System.out.println("---------------------------------------------------------");
-                        arreglo = algoritmoBubbleSort.ingresarArreglo();
+                        arreglo = algoritmoMergeSort.ingresarArreglo();
                         System.out.println("\t✭✭✭✭ Arreglo Creado ✭✭✭✭");
                         System.out.println("---------------------------------------------------------");
-                        algoritmoBubbleSort.mostrarArreglo(arreglo);
+                        algoritmoMergeSort.mostrarArreglo(arreglo);
                         System.out.println("---------------------------------------------------------");
                         System.out.println("\t✭✭✭✭ Algoritmo de Ordenamiento ✭✭✭✭");
                         System.out.println("---------------------------------------------------------");
-                        arregloOrdenado = algoritmoBubbleSort.ordenarArreglo(arreglo);
+                        arregloOrdenado = algoritmoMergeSort.ordenarArreglo(arreglo);
                         System.out.println("---------------------------------------------------------");
                         System.out.println(ANSI_RED+"\t✭✭✭✭ Arreglo Ordenado ✭✭✭✭"+ANSI_RESET);
                         System.out.println("---------------------------------------------------------");
-                        algoritmoBubbleSort.mostrarArreglo(arregloOrdenado);
+                        algoritmoMergeSort.mostrarArreglo(arregloOrdenado);
                         System.out.println("---------------------------------------------------------");
                         break;
                 }
-
+                break;
+            case 2:
+                QuickSort algoritmoQuickSort =  new QuickSort();
+                System.out.println("\t✭✭✭✭ Ha seleccionado Quick Sort ✭✭✭✭");
+                System.out.println("---------------------------------------------------------");
+                System.out.println("Desea : "+"\n1.- Generar un Arreglo Automatico"+"\n2.- Ingresar Arreglo ");
+                System.out.println("---------------------------------------------------------");
+                System.out.print("Seleccione una opción : ");
+                opción = sc.nextInt();
+                System.out.println("---------------------------------------------------------");
+                switch (opción){
+                    case 1:
+                        System.out.println("---------------------------------------------------------");
+                        arreglo = algoritmoQuickSort.generarArreglo();
+                        System.out.println("\t✭✭✭✭ Arreglo Creado ✭✭✭✭");
+                        System.out.println("---------------------------------------------------------");
+                        algoritmoQuickSort.mostrarArreglo(arreglo);
+                        System.out.println("---------------------------------------------------------");
+                        System.out.println("\t✭✭✭✭ Algoritmo de Ordenamiento ✭✭✭✭");
+                        System.out.println("---------------------------------------------------------");
+                        arregloOrdenado = algoritmoQuickSort.ordenarArreglo(arreglo);
+                        System.out.println("---------------------------------------------------------");
+                        System.out.println(ANSI_RED+"\t✭✭✭✭ Arreglo Ordenado ✭✭✭✭"+ANSI_RESET);
+                        System.out.println("---------------------------------------------------------");
+                        algoritmoQuickSort.mostrarArreglo(arregloOrdenado);
+                        System.out.println("---------------------------------------------------------");
+                        break;
+                    case 2:
+                        System.out.println("---------------------------------------------------------");
+                        System.out.println(ANSI_RED+"\t✭✭✭✭ Ingreso de Arreglo ✭✭✭✭"+ANSI_RESET);
+                        System.out.println("---------------------------------------------------------");
+                        arreglo = algoritmoQuickSort.ingresarArreglo();
+                        System.out.println("\t✭✭✭✭ Arreglo Creado ✭✭✭✭");
+                        System.out.println("---------------------------------------------------------");
+                        algoritmoQuickSort.mostrarArreglo(arreglo);
+                        System.out.println("---------------------------------------------------------");
+                        System.out.println("\t✭✭✭✭ Algoritmo de Ordenamiento ✭✭✭✭");
+                        System.out.println("---------------------------------------------------------");
+                        arregloOrdenado = algoritmoQuickSort.ordenarArreglo(arreglo);
+                        System.out.println("---------------------------------------------------------");
+                        System.out.println(ANSI_RED+"\t✭✭✭✭ Arreglo Ordenado ✭✭✭✭"+ANSI_RESET);
+                        System.out.println("---------------------------------------------------------");
+                        algoritmoQuickSort.mostrarArreglo(arregloOrdenado);
+                        System.out.println("---------------------------------------------------------");
+                        break;
+                }
+                break;
         }
-
     }
 
     private static void mostrarMenúParaAlgoritmosCuadraticos(int opciónsecundaria) {
