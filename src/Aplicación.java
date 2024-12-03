@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Aplicación {
@@ -104,8 +105,69 @@ public class Aplicación {
     }
 
     private static void mostrarMenúDeHashingYResoluciónDeColisiones(int opciónsecundaria) {
-
+        Scanner sc = new Scanner(System.in);
+    
+        // Mostrar mensaje inicial
+        System.out.println("Ubicar números, además la aplicación generará de forma automática un array vacío de tamaño 11.");
+        int[] arrayUsuario = new int[11]; // Crear array vacío de tamaño 11
+    
+        // Solicitar al usuario que ingrese los números
+        System.out.println("Por favor, ingrese 11 números enteros únicos entre 0 y 99:");
+        for (int i = 0; i < arrayUsuario.length; i++) {
+            while (true) {
+                System.out.print("Número " + (i + 1) + ": ");
+                try {
+                    int num = Integer.parseInt(sc.nextLine()); // Leer entrada como cadena y convertir a entero
+                    if (num >= 0 && num <= 99 && !contiene(arrayUsuario, num)) {
+                        arrayUsuario[i] = num;
+                        break; // Salir del bucle si el número es válido
+                    } else {
+                        System.out.println("Número inválido o repetido. Intente nuevamente.");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Entrada no válida. Por favor, ingrese un número entero.");
+                }
+            }
+        }
+    
+        System.out.println("Array ingresado: " + Arrays.toString(arrayUsuario));
+    
+        // Lógica de Linear Probing o Quadratic Probing
+        switch (opciónsecundaria) {
+            case 1: // Linear Probing
+                LinearProbing linearProbing = new LinearProbing(11);
+                for (int num : arrayUsuario) {
+                    linearProbing.insert(num);
+                }
+                System.out.println("\nResultado con Linear Probing:");
+                linearProbing.display();
+                break;
+    
+            case 2: // Quadratic Probing
+                QuadraticProbing quadraticProbing = new QuadraticProbing(11);
+                for (int num : arrayUsuario) {
+                    quadraticProbing.insert(num);
+                }
+                System.out.println("\nResultado con Quadratic Probing:");
+                quadraticProbing.display();
+                break;
+    
+            default:
+                System.out.println("Opción no válida.");
+        }
     }
+    
+    // Método para verificar si un número ya está en el array
+    private static boolean contiene(int[] array, int num) {
+        for (int n : array) {
+            if (n == num) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+
 
     private static void mostrarMenúDeBúsquedaLinealYBinaria(int opciónsecundaria) {
         Scanner sc = new Scanner(System.in);
